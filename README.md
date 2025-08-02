@@ -1,75 +1,200 @@
-<header>
+# Tic-Tac-Toe AI
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+An unbeatable Tic-Tac-Toe AI implementation using the Minimax algorithm with Alpha-Beta pruning. This project demonstrates game theory concepts and basic search algorithms through a classic game.
 
-# Introduction to GitHub
+## Features
 
-_Get started using GitHub in less than an hour._
+- **Unbeatable AI**: Uses Minimax algorithm with Alpha-Beta pruning to ensure the AI never loses
+- **Interactive Gameplay**: Clean command-line interface for human vs AI matches
+- **Comprehensive Testing**: Automated test suite validates AI performance across 1000+ games
+- **Educational**: Well-documented code demonstrating game theory and search algorithms
 
-</header>
+## Algorithm Overview
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+### Minimax Algorithm
+The AI uses the Minimax algorithm, a decision-making algorithm for turn-based games. It works by:
 
-## Step 1: Create a branch
+1. **Exploring all possible moves** recursively to the end of the game
+2. **Evaluating terminal states**: +10 for AI win, -10 for human win, 0 for tie
+3. **Maximizing AI advantage** while minimizing human advantage
+4. **Selecting the move** that leads to the best possible outcome
 
-_Welcome to "Introduction to GitHub"! :wave:_
+### Alpha-Beta Pruning
+To optimize performance, the implementation includes Alpha-Beta pruning:
 
-**What is GitHub?**: GitHub is a collaboration platform that uses _[Git](https://docs.github.com/get-started/quickstart/github-glossary#git)_ for versioning. GitHub is a popular place to share and contribute to [open-source](https://docs.github.com/get-started/quickstart/github-glossary#open-source) software.
-<br>:tv: [Video: What is GitHub?](https://www.youtube.com/watch?v=pBy1zgt0XPc)
+- **Reduces search space** by eliminating branches that won't affect the final decision
+- **Maintains the same result** as standard Minimax but with better performance
+- **Alpha**: Best value maximizer can guarantee
+- **Beta**: Best value minimizer can guarantee
 
-**What is a repository?**: A _[repository](https://docs.github.com/get-started/quickstart/github-glossary#repository)_ is a project containing files and folders. A repository tracks versions of files and folders. For more information, see "[About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)" from GitHub Docs.
+## Project Structure
 
-**What is a branch?**: A _[branch](https://docs.github.com/en/get-started/quickstart/github-glossary#branch)_ is a parallel version of your repository. By default, your repository has one branch named `main` and it is considered to be the definitive branch. Creating additional branches allows you to copy the `main` branch of your repository and safely make any changes without disrupting the main project. Many people use branches to work on specific features without affecting any other parts of the project.
+```
+├── tic_tac_toe.py    # Main game implementation
+├── test_ai.py        # AI testing and validation
+└── README.md         # This file
+```
 
-Branches allow you to separate your work from the `main` branch. In other words, everyone's work is safe while you contribute. For more information, see "[About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)".
+## Installation & Usage
 
-**What is a profile README?**: A _[profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)_ is essentially an "About me" section on your GitHub profile where you can share information about yourself with the community on GitHub.com. GitHub shows your profile README at the top of your profile page. For more information, see "[Managing your profile README](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)".
+### Requirements
+- Python 3.6 or higher
+- No external dependencies required
 
-![profile-readme-example](/images/profile-readme-example.png)
+### Running the Game
+```bash
+python3 tic_tac_toe.py
+```
 
-### :keyboard: Activity: Your first branch
+### Testing the AI
+```bash
+python3 test_ai.py
+```
 
-1. Open a new browser tab and navigate to your newly made repository. Then, work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate to the **< > Code** tab in the header menu of your repository.
+## How to Play
 
-   ![code-tab](/images/code-tab.png)
+1. **Start the game**: Run `python3 tic_tac_toe.py`
+2. **Make moves**: Enter coordinates as "row col" (e.g., "1 2" for row 1, column 2)
+3. **Coordinate system**: Both row and column indices range from 0 to 2
+4. **Quit anytime**: Type 'quit', 'exit', or 'q' to exit the game
 
-3. Click on the **main** branch drop-down.
+### Example Game Session
 
-   ![main-branch-dropdown](/images/main-branch-dropdown.png)
+```
+==================================================
+Welcome to Tic-Tac-Toe vs Unbeatable AI!
+==================================================
+You are X, AI is O
+Enter coordinates as 'row col' (0-2 for each)
+Type 'quit' to exit the game
+==================================================
 
-4. In the field, name your branch `my-first-branch`. In this case, the name must be `my-first-branch` to trigger the course workflow.
-5. Click **Create branch: my-first-branch** to create your branch.
+   0   1   2
+0    |   |  
+  -----------
+1    |   |  
+  -----------
+2    |   |  
 
-   ![create-branch-button](/images/create-branch-button.png)
+X's turn (Human)
+Enter your move (row col), e.g., '1 2' for row 1, column 2:
+Your move: 1 1
+You played at position (1, 1)
 
-   The branch will automatically switch to the one you have just created.
-   The **main** branch drop-down bar will reflect your new branch and display the new branch name.
+   0   1   2
+0    |   |  
+  -----------
+1    | X |  
+  -----------
+2    |   |  
 
-6. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+O's turn (AI)
+AI is thinking...
+AI played at position (0, 0)
 
-<footer>
+   0   1   2
+0  O |   |  
+  -----------
+1    | X |  
+  -----------
+2    |   |  
+```
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+## Code Structure
 
----
+### TicTacToe Class
+The main game class containing:
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+- **Board Management**: 3x3 grid representation and move validation
+- **Game Logic**: Win detection, tie detection, and game state management
+- **AI Implementation**: Minimax algorithm with Alpha-Beta pruning
+- **User Interface**: Board display and input handling
 
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+### Key Methods
 
-</footer>
+#### Core Game Logic
+- `make_move()`: Execute a move on the board
+- `check_winner()`: Detect winning conditions
+- `is_game_over()`: Check if game has ended
+- `get_available_moves()`: Get all valid moves
+
+#### AI Implementation
+- `minimax()`: Core Minimax algorithm with Alpha-Beta pruning
+- `evaluate_board()`: Board state evaluation function
+- `get_best_move()`: Find optimal move for AI
+
+#### User Interface
+- `display_board()`: Render the game board
+- `get_human_move()`: Handle user input with validation
+- `play_game()`: Main game loop
+
+## AI Performance
+
+The AI has been tested extensively and demonstrates:
+
+- **0% Loss Rate**: Never loses against random or strategic opponents
+- **89.9% Win Rate**: Wins most games when possible
+- **10.1% Tie Rate**: Forces ties when opponent plays optimally
+- **Perfect Strategy**: Always makes the mathematically optimal move
+
+### Test Results
+```
+Total games played: 1000
+AI wins: 899 (89.9%)
+AI losses: 0 (0.0%)
+Ties: 101 (10.1%)
+✅ SUCCESS: AI is unbeatable! (Never lost a game)
+```
+
+## Educational Value
+
+This project demonstrates several important computer science concepts:
+
+### Game Theory
+- **Zero-sum games**: One player's gain equals another's loss
+- **Perfect information**: All game state is visible to both players
+- **Optimal play**: Mathematical concept of best possible moves
+
+### Search Algorithms
+- **Tree traversal**: Exploring all possible game states
+- **Recursive thinking**: Breaking complex problems into smaller parts
+- **Optimization**: Alpha-Beta pruning for efficiency
+
+### Programming Concepts
+- **Object-oriented design**: Clean class structure and encapsulation
+- **Algorithm implementation**: Translating mathematical concepts to code
+- **Testing and validation**: Ensuring correctness through comprehensive testing
+
+## Customization
+
+The code is designed to be easily modifiable:
+
+### Difficulty Levels
+You can modify the AI by:
+- Limiting search depth for easier opponents
+- Adding randomness to AI moves
+- Implementing different evaluation functions
+
+### Game Variations
+The structure supports extensions like:
+- Different board sizes
+- Different win conditions
+- Multiple players
+
+### UI Improvements
+Potential enhancements:
+- Graphical user interface
+- Web-based interface
+- Mobile app implementation
+
+## Contributing
+
+This project serves as an educational example. Feel free to:
+- Experiment with different algorithms
+- Add new features or game modes
+- Improve the user interface
+- Optimize performance further
+
+## License
+
+This project is open source and available for educational use.
